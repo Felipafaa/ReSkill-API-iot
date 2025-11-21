@@ -7,7 +7,7 @@ using ReSkill.API.Models;
 namespace ReSkill.API.Controllers
 {
     [ApiController]
-    [Route("api/v{version:apiVersion}/[controller]")] // Versionamento na Rota
+    [Route("api/v{version:apiVersion}/[controller]")] 
     [ApiVersion("1.0")]
     public class SessionsController : ControllerBase
     {
@@ -17,11 +17,9 @@ namespace ReSkill.API.Controllers
         public SessionsController(AppDbContext context, ILogger<SessionsController> logger)
         {
             _context = context;
-            _logger = logger; // Logging (Requisito Monitoramento)
+            _logger = logger; 
         }
 
-        // GET: api/v1/sessions
-        // Implementa Paginação (page, pageSize)
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
@@ -34,7 +32,6 @@ namespace ReSkill.API.Controllers
                 .Take(pageSize)
                 .ToListAsync();
 
-            // HATEOAS: Adicionando links para cada item
             var result = sessions.Select(s => new
             {
                 Data = s,
@@ -54,18 +51,16 @@ namespace ReSkill.API.Controllers
                 Items = result
             };
 
-            return Ok(response); // Status 200
+            return Ok(response); 
         }
 
-        // GET: api/v1/sessions/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             var session = await _context.StudySessions.FindAsync(id);
 
-            if (session == null) return NotFound(); // Status 404
+            if (session == null) return NotFound(); 
 
-            // HATEOAS simples
             var resource = new
             {
                 Data = session,
@@ -79,22 +74,19 @@ namespace ReSkill.API.Controllers
             return Ok(resource);
         }
 
-        // POST: api/v1/sessions
         [HttpPost]
         public async Task<IActionResult> Create(StudySession session)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState); // Status 400
+            if (!ModelState.IsValid) return BadRequest(ModelState); 
 
             _context.StudySessions.Add(session);
             await _context.SaveChangesAsync();
 
             _logger.LogInformation("Nova sessão criada com ID {Id}", session.Id);
 
-            // Retorna 201 Created com o Header Location
             return CreatedAtAction(nameof(GetById), new { id = session.Id, version = "1" }, session);
         }
 
-        // PUT: api/v1/sessions/5
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, StudySession session)
         {
@@ -112,10 +104,9 @@ namespace ReSkill.API.Controllers
                 throw;
             }
 
-            return NoContent(); // Status 204
+            return NoContent(); 
         }
 
-        // DELETE: api/v1/sessions/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

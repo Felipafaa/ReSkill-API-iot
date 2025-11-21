@@ -8,7 +8,6 @@ namespace ReSkill.Tests
         [Fact]
         public void StudySession_Should_Have_Correct_Data()
         {
-            // Arrange (Preparação)
             var session = new StudySession
             {
                 Id = 1,
@@ -17,12 +16,9 @@ namespace ReSkill.Tests
                 CreatedAt = DateTime.Now
             };
 
-            // Act (Ação - neste caso simples, só verificação de propriedade)
-
-            // Assert (Validação)
             Assert.Equal("IoT", session.Topic);
             Assert.Equal(60, session.DurationMinutes);
-            Assert.True(session.IsCompleted); // Valor padrão é true
+            Assert.True(session.IsCompleted); 
         }
     }
 }

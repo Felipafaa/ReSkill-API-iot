@@ -10,14 +10,13 @@ namespace ReSkill.API.Models
         public int Id { get; set; }
 
         [Required]
-        public string Topic { get; set; } // Ex: "C# Básico"
+        public string Topic { get; set; } 
 
         [Required]
-        public int DurationMinutes { get; set; } // Tempo vindo do dispositivo
+        public int DurationMinutes { get; set; } 
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
-        // Para simular a lógica de consistência futura
         public bool IsCompleted { get; set; } = true;
     }
 }
