@@ -13,11 +13,11 @@ Alinhado ao tema **“O Futuro do Trabalho”**, o projeto utiliza:
 
 O resultado é uma plataforma que une **IoT + IoB + GenAI** para melhorar a performance e a motivação do usuário.
 
-## 🎥 Vídeo Demonstrativo (Obrigatório)
+## 🎥 Vídeo Demonstrativo 
 
 Confira a demonstração completa da solução *(IoT + IA + Backend)* funcionando:
 
-👉 **[CLIQUE AQUI PARA ASSISTIR AO VÍDEO NO YOUTUBE](#)**
+👉 **[https://youtu.be/lPfY88ptL8I](#)**
 
 ## 🏛️ Arquitetura da Solução
 
