@@ -54,3 +54,8 @@ Para testar a criação de uma nova sessão de estudo (POST), envie o seguinte J
   "durationMinutes": 120,
   "isCompleted": true
 }
+
+## Integrantes do grupo 
+- Vinícius De Souza Sant Anna (556841)
+- Felipe Rosa Peres (557636)
+- Pedro Henrique De Souza (555533)
