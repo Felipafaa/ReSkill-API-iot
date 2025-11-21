@@ -1,61 +1,116 @@
-ReSkill+
+# 🚀 ReSkill+ | Global Solution 2025
+### *Disruptive Architectures: IoT, IoB & Generative AI*
 
-Sobre o Projeto
-A ReSkill+ é uma solução tecnológica desenvolvida como parte de uma plataforma inteligente de requalificação profissional. Alinhada ao tema "O Futuro do Trabalho", a API serve como backend para registrar sessões de estudo provenientes de dispositivos IoT, 
-permitindo o monitoramento de hábitos de aprendizado e a personalização de trilhas de carreira.
+## 📖 Sobre o Projeto
 
-## 🚀 Tecnologias Utilizadas
-- .NET 8.0 (ASP.NET Core Web API)
-- Entity Framework Core (ORM)
-- SQL Server (Banco de Dados)
-- xUnit (Testes Integrados/Unitários)
-- Swagger/OpenAPI (Documentação)
+O **ReSkill+ Focus Tracker** é uma solução integrada de **IoT (Internet das Coisas)** e **IoB (Internet do Comportamento)** projetada para **monitorar, analisar e otimizar o tempo de estudo e foco** de profissionais em requalificação.
 
-## ⚙️ Funcionalidades e Requisitos Atendidos
+Alinhado ao tema **“O Futuro do Trabalho”**, o projeto utiliza:
 
-1. Boas Práticas REST
-- Implementação completa dos verbos HTTP: `GET`, `POST`, `PUT`, `DELETE`.
-- Paginação: Endpoint de listagem suporta parâmetros `page` e `pageSize`.
-- HATEOAS: As respostas da API incluem links de navegação (`self`, `update`, `delete`) para guiar o cliente.
-- Códigos de status HTTP corretos (`200`, `201`, `404`, etc.).
+- Um **dispositivo Digital Twin** (simulado em Python) para coletar dados em tempo real
+- **Inteligência Artificial Generativa (Llama 3 via Groq)** para agir como um *Mentor de Carreira*
+- Um **backend .NET 8** para armazenar e disponibilizar o histórico de estudos
 
-2. Monitoramento e Observabilidade
-- Health Check: Endpoint acessível em `/health` para verificar a saúde da aplicação.
-- Logging: Logs implementados no Controller para rastreabilidade de operações.
+O resultado é uma plataforma que une **IoT + IoB + GenAI** para melhorar a performance e a motivação do usuário.
 
-3. Versionamento da API
-- Versionamento por URL implementado.
-- Rota padrão: `/api/v1/[controller]`.
+## 🎥 Vídeo Demonstrativo (Obrigatório)
 
-4. Persistência de Dados
-- Utilização do SQL Server via Entity Framework Core.
-- Uso de Migrations para controle de versão do banco de dados.
+Confira a demonstração completa da solução *(IoT + IA + Backend)* funcionando:
 
-## 🛠️ Como Rodar o Projeto
+👉 **[CLIQUE AQUI PARA ASSISTIR AO VÍDEO NO YOUTUBE](#)**
 
-1. Configurar Banco de Dados:
-   Certifique-se de ter o SQL Server (ou LocalDB) instalado. A connection string padrão está configurada no `appsettings.json`.
+## 🏛️ Arquitetura da Solução
 
-2. Aplicar Migrations:
-   Pelo Console do Gerenciador de Pacotes do Visual Studio, execute:
-   "Update-Database"
+### 🔹 1. Dispositivo IoT (Digital Twin)
 
-3. Executar a API:
-   Abra a solução no Visual Studio 2022 e execute o projeto ReSkill.API. O Swagger será aberto automaticamente em: https://localhost:7226/swagger
+- Simulador desenvolvido em **Python**
+- Atua como dispositivo físico (Edge Computing)
+- Gerencia estado da sessão (Início/Fim do estudo)
+- Coleta métricas comportamentais (IoB)
+- Envia dados para a IA Generativa (Groq / Llama 3)
+- Envia os resultados para a API .NET
 
-4. Rodar Testes:
-   Utilize o Test Explorer do Visual Studio para executar a suíte de testes ReSkill.Tests
+### 🔹 2. Backend / API (.NET 8)
 
-## 📝 Exemplo de Requisição (JSON)
+- Desenvolvido em **C# (.NET 8)**
+- Arquitetura **RESTful**
+- Recebe e persiste dados vindos do IoT
+- Banco de dados **SQL Server**
 
-Para testar a criação de uma nova sessão de estudo (POST), envie o seguinte JSON no corpo da requisição para o endpoint `/api/v1/Sessions`:
-{
-  "topic": "Estudo de Arquitetura de Software",
-  "durationMinutes": 120,
-  "isCompleted": true
-}
+### 🔹 3. Inteligência Artificial (Generative AI)
 
-## Integrantes do grupo 
-- Vinícius De Souza Sant Anna (556841)
-- Felipe Rosa Peres (557636)
-- Pedro Henrique De Souza (555533)
+- **Modelo:** Llama 3.3 (70b-versatile) via Groq Cloud
+- Função:
+  - Analisar tempo de foco
+  - Gerar feedbacks motivacionais
+  - Recomendar comportamentos e soft skills
+
+## 🔁 Fluxo de Dados
+
+1. Usuário inicia a sessão no dispositivo IoT
+2. IoT começa a contar o tempo (Foco)
+3. Usuário encerra sessão
+4. IoT envia a duração para a IA (Groq)
+5. IA retorna feedback personalizado
+6. IoT envia **Duração + Feedback** para a API .NET
+7. A API salva no banco SQL Server
+
+## 📂 Estrutura do Repositório
+
+```
+/
+├── backend/
+│   ├── ReSkill.API/
+│   └── ReSkill.Tests/
+├── iot/
+│   └── iot_simulator.py
+└── README.md
+```
+
+## 🚀 Como Rodar o Projeto
+
+### ✔️ Pré-requisitos
+
+- .NET 8 SDK
+- Python 3.8+
+- SQL Server (LocalDB ou Container)
+- Chave de API da Groq
+
+## ▶️ Passo 1: Backend (.NET)
+
+```
+cd backend/ReSkill.API
+dotnet restore
+dotnet ef database update
+dotnet run
+```
+
+A API deve rodar em:
+
+- http://localhost:5156
+- https://localhost:7226
+
+## ▶️ Passo 2: Dispositivo IoT (Python)
+
+```
+cd iot
+pip install requests urllib3
+python iot_simulator.py
+```
+
+## 🧪 Testes e Validação
+
+### Swagger
+http://localhost:5156/swagger
+
+### Console Python
+- Duração
+- Feedback da IA
+
+## 👥 Integrantes do Grupo
+
+| Nome | RM |
+|------|------|
+| Felipe Rosa Peres | RM 557636 |
+| Vinícius De Souza Sant Anna | RM 556841 |
+| Pedro Henrique De Souza | RM 555533 |
