@@ -10,6 +10,7 @@ namespace ReSkill.API.Data
         }
 
         public DbSet<StudySession> StudySessions { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
